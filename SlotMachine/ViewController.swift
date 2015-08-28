@@ -28,12 +28,24 @@ class ViewController: UIViewController {
     var winnderPaidTitleLabel: UILabel!
     
     // MARK:
+    // MARK: Buttons
+    
+    var resetButton: UIButton!
+    var betOneButton: UIButton!
+    var betMaxButton: UIButton!
+    var spinButton: UIButton!
+    
+    
+    // MARK:
     // MARK: Constants
     
     let kMarginForView: CGFloat = 10.0
     let kMarginForSlot: CGFloat = 2.0
     let kSixth: CGFloat = 1.0/6.0
     let kThird: CGFloat = 1.0/3.0
+    let kEight: CGFloat = 1.0/8.0
+    let kHalf: CGFloat = 1.0/2.0
+    
     let kNumberOfContainers = 3
     let kNumberOfSlots = 3
     
@@ -47,11 +59,20 @@ class ViewController: UIViewController {
         setupFirstContainer(self.firstContainer)
         setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
+        setupFourthContainer(self.fourthContainer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK:
+    // MARK: IBActions
+    
+    func resetButtonPressed(button: UIButton) {
+        println("button pressed")
     }
     
     // MARK:
@@ -196,5 +217,29 @@ class ViewController: UIViewController {
         containerView.addSubview(self.winnderPaidTitleLabel)
         
     }
+    
+    func setupFourthContainer(containerView: UIView) {
+        self.resetButton = UIButton()
+        self.resetButton.setTitle("Reset", forState: .Normal)
+        self.resetButton.backgroundColor = .darkGrayColor()
+        self.resetButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        self.resetButton.titleLabel?.font = UIFont(name: "Superclarendon-Bold", size: 16)
+        self.resetButton.sizeToFit()
+        self.resetButton.center = CGPoint(
+            x: containerView.frame.width * kEight,
+            y: containerView.frame.height * kHalf)
+        self.resetButton.addTarget(self, action: "resetButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        containerView.addSubview(self.resetButton)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
