@@ -60,6 +60,7 @@ class ViewController: UIViewController {
         setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
         setupFourthContainer(self.fourthContainer)
+        SlotFactory.createSlots()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,6 +73,7 @@ class ViewController: UIViewController {
     // MARK: IBActions
     
     func resetButtonPressed(button: UIButton) {
+        print(button)
         println("Reset button pressed")
     }
     
