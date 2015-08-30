@@ -75,8 +75,8 @@ class ViewController: UIViewController {
     // MARK: IBActions
     
     func resetButtonPressed(button: UIButton) {
-        print(button)
-        println("Reset button pressed")
+        allCards.removeAll(keepCapacity: false)
+        setupSecondContainer(self.secondContainer)
     }
     
     func betOneButtonPressed(button: UIButton) {
@@ -141,17 +141,20 @@ class ViewController: UIViewController {
     }
     
     func setupSecondContainer(containerView: UIView) {
-        
-        self.allCards = SlotFactory.createSlots()
-        
+    
         for var containerNumber = 0; containerNumber < kNumberOfContainers; ++containerNumber {
-            
-            var cards:[Slot] = allCards[containerNumber]
             
             for var slotNumber = 0; slotNumber < kNumberOfSlots; ++slotNumber {
                 
+                var cards:[Slot] = []
                 var slotImageView = UIImageView()
-                slotImageView.image = cards[slotNumber].image
+                
+                if (self.allCards.count != 0) {
+                    cards = allCards[containerNumber]
+                    slotImageView.image = cards[slotNumber].image
+                } else {
+                    slotImageView.image = UIImage(named: "Ace")
+                }
                 
                 slotImageView.frame = CGRect(
                     x: containerView.bounds.origin.x + (containerView.bounds.width * CGFloat(containerNumber) * kThird),
