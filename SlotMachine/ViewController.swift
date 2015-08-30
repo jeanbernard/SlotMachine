@@ -45,9 +45,15 @@ class ViewController: UIViewController {
     let kThird: CGFloat = 1.0/3.0
     let kEight: CGFloat = 1.0/8.0
     let kHalf: CGFloat = 1.0/2.0
-    
     let kNumberOfContainers = 3
     let kNumberOfSlots = 3
+    
+    // MARK:
+    // MARK: Stats
+    
+    var credits = 50
+    var currentBet = 0
+    var winnings = 0
     
     var allCards:[[Slot]] = []
     
@@ -75,8 +81,7 @@ class ViewController: UIViewController {
     // MARK: IBActions
     
     func resetButtonPressed(button: UIButton) {
-        allCards.removeAll(keepCapacity: false)
-        setupSecondContainer(self.secondContainer)
+        self.hardReset()
     }
     
     func betOneButtonPressed(button: UIButton) {
@@ -90,6 +95,7 @@ class ViewController: UIViewController {
     func spinButtonPressed(button: UIButton) {
         allCards = SlotFactory.createSlots()
         setupSecondContainer(self.secondContainer)
+        println(self.secondContainer.subviews.count)
     }
     
     // MARK:
@@ -141,6 +147,8 @@ class ViewController: UIViewController {
     }
     
     func setupSecondContainer(containerView: UIView) {
+        
+        self.removeSubviews(containerView)
     
         for var containerNumber = 0; containerNumber < kNumberOfContainers; ++containerNumber {
             
@@ -172,7 +180,7 @@ class ViewController: UIViewController {
     func setupThirdContainer(containerView: UIView) {
         
         self.creditsLabel = UILabel()
-        self.creditsLabel.text = "000000"
+        self.creditsLabel.text = "\(self.credits)"
         self.creditsLabel.textColor = UIColor.redColor()
         self.creditsLabel.font = UIFont(name: "Menlo-Bold", size: 16)
         self.creditsLabel.sizeToFit()
@@ -294,13 +302,18 @@ class ViewController: UIViewController {
         
     }
     
+    func removeSubviews(containerView: UIView) {
+        for view in containerView.subviews {
+            view.removeFromSuperview()
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
+    func hardReset() {
+        self.credits = 50
+        self.currentBet = 0
+        self.winnings = 0
+        allCards.removeAll(keepCapacity: true)
+        setupSecondContainer(self.secondContainer)
+    }
     
 }
