@@ -21,7 +21,6 @@ class SlotFactory {
         for var containerNumber = 0; containerNumber < kNumberOfContainers; containerNumber++ {
             
             var slotArray:[Slot] = []
-            println("-------")
             
             for var slotNumber = 0; slotNumber < kNumberOfSlots; slotNumber++ {
                 var slotInstance = SlotFactory.createSlot(slotArray)
@@ -52,46 +51,32 @@ class SlotFactory {
         switch randomNumber {
         case 1:
             slot = Slot(value: 1, image: "Ace", isRed: true)
-            println(slot.value)
         case 2:
             slot = Slot(value: 2, image: "Two", isRed: true)
-            println(slot.value)
         case 3:
             slot = Slot(value: 3, image: "Three", isRed: true)
-            println(slot.value)
         case 4:
             slot = Slot(value: 4, image: "Four", isRed: true)
-            println(slot.value)
         case 5:
             slot = Slot(value: 5, image: "Five", isRed: false)
-            println(slot.value)
         case 6:
             slot = Slot(value: 6, image: "Six", isRed: false)
-            println(slot.value)
         case 7:
             slot = Slot(value: 7, image: "Seven", isRed: true)
-            println(slot.value)
         case 8:
             slot = Slot(value: 8, image: "Eight", isRed: false)
-            println(slot.value)
         case 9:
             slot = Slot(value: 9, image: "Nine", isRed: false)
-            println(slot.value)
         case 10:
             slot = Slot(value: 10, image: "Ten", isRed: true)
-            println(slot.value)
         case 11:
             slot = Slot(value: 11, image: "Jack", isRed: false)
-            println(slot.value)
         case 12:
             slot = Slot(value: 12, image: "Queen", isRed: false)
-            println(slot.value)
         case 13:
             slot = Slot(value: 13, image: "King", isRed: true)
-            println(slot.value)
         default:
             slot = Slot(value: 0, image: "Ace", isRed: true)
-            println(slot.value)
         }
         return slot
     }
