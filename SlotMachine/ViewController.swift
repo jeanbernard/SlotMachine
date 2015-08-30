@@ -49,6 +49,8 @@ class ViewController: UIViewController {
     let kNumberOfContainers = 3
     let kNumberOfSlots = 3
     
+    var allCards:[[Slot]] = []
+    
     // MARK:
     // MARK: View Controller Methods
     
@@ -86,7 +88,8 @@ class ViewController: UIViewController {
     }
     
     func spinButtonPressed(button: UIButton) {
-        println("Spin button pressed")
+        allCards = SlotFactory.createSlots()
+        setupSecondContainer(self.secondContainer)
     }
     
     // MARK:
@@ -139,7 +142,7 @@ class ViewController: UIViewController {
     
     func setupSecondContainer(containerView: UIView) {
         
-        var allCards:[[Slot]] = SlotFactory.createSlots()
+        self.allCards = SlotFactory.createSlots()
         
         for var containerNumber = 0; containerNumber < kNumberOfContainers; ++containerNumber {
             
