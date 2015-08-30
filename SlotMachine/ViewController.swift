@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
         setupFourthContainer(self.fourthContainer)
-        SlotFactory.createSlots()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,12 +139,16 @@ class ViewController: UIViewController {
     
     func setupSecondContainer(containerView: UIView) {
         
+        var allCards:[[Slot]] = SlotFactory.createSlots()
+        
         for var containerNumber = 0; containerNumber < kNumberOfContainers; ++containerNumber {
+            
+            var cards:[Slot] = allCards[containerNumber]
             
             for var slotNumber = 0; slotNumber < kNumberOfSlots; ++slotNumber {
                 
                 var slotImageView = UIImageView()
-                slotImageView.backgroundColor = UIColor.yellowColor()
+                slotImageView.image = cards[slotNumber].image
                 
                 slotImageView.frame = CGRect(
                     x: containerView.bounds.origin.x + (containerView.bounds.width * CGFloat(containerNumber) * kThird),
