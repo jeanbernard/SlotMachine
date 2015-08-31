@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
         setupFourthContainer(self.fourthContainer)
-        
+        updateMainView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +85,19 @@ class ViewController: UIViewController {
     }
     
     func betOneButtonPressed(button: UIButton) {
-        println("Bet one button pressed")
+        
+        if credits <= 0 {
+            self.showAlertWithText(header: "Hey!!", message: "You have no more credits left to play. Please reset the game")
+        } else {
+            if currentBet < 5 {
+                currentBet += 1
+                credits -= 1
+                updateMainView()
+            } else {
+                self.showAlertWithText(message: "You have exceeded the maximum amount of bets allowed")
+            }
+        }
+        
     }
     
     func betMaxButtonPressed(button: UIButton) {
@@ -95,7 +107,6 @@ class ViewController: UIViewController {
     func spinButtonPressed(button: UIButton) {
         allCards = SlotFactory.createSlots()
         setupSecondContainer(self.secondContainer)
-        println(self.secondContainer.subviews.count)
     }
     
     // MARK:
@@ -180,7 +191,7 @@ class ViewController: UIViewController {
     func setupThirdContainer(containerView: UIView) {
         
         self.creditsLabel = UILabel()
-        self.creditsLabel.text = "\(self.credits)"
+        self.creditsLabel.text = "000000"
         self.creditsLabel.textColor = UIColor.redColor()
         self.creditsLabel.font = UIFont(name: "Menlo-Bold", size: 16)
         self.creditsLabel.sizeToFit()
@@ -314,7 +325,6 @@ class ViewController: UIViewController {
         self.winnings = 0
         allCards.removeAll(keepCapacity: true)
         setupSecondContainer(self.secondContainer)
-        
         self.updateMainView()
     }
     
