@@ -324,4 +324,21 @@ class ViewController: UIViewController {
         self.winnerPaidLabel.text = "\(self.winnings)"
     }
     
+    func showAlertWithText(header: String = "Warning", message: String) {
+        
+        var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
