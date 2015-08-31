@@ -314,6 +314,14 @@ class ViewController: UIViewController {
         self.winnings = 0
         allCards.removeAll(keepCapacity: true)
         setupSecondContainer(self.secondContainer)
+        
+        self.updateMainView()
+    }
+    
+    func updateMainView() {
+        self.creditsLabel.text = "\(self.credits)"
+        self.betLabel.text = "\(self.currentBet)"
+        self.winnerPaidLabel.text = "\(self.winnings)"
     }
     
 }
