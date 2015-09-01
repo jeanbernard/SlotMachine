@@ -58,11 +58,24 @@ class SlotBrain {
                 println("No flush")
             }
             
+            if SlotBrain.checkForThreeRow(slotRow) == true {
+                println("Three in a row!")
+                winnings += 1
+                threeOfAKindCount += 1
+            } else {
+                println("No three")
+            }
+            
         }
         
         if flushWinCount == 3 {
             println("Royal Flush")
             winnings += 15
+        }
+        
+        if threeOfAKindCount == 3 {
+            println("Huge win!!")
+            winnings += 1000
         }
         
         return winnings
@@ -90,7 +103,19 @@ class SlotBrain {
         }
     }
     
-
+    class func checkForThreeRow(slotRow: [Slot]) -> Bool {
+        
+        var firstNumber = slotRow[0].value
+        
+        if slotRow[1].value == (firstNumber + 1) && slotRow[2].value == (firstNumber + 2) {
+            return true
+        } else if slotRow[1].value == (firstNumber - 1) && slotRow[2].value == (firstNumber - 2) {
+            return true
+        } else {
+            return false
+        }
+        
+    }
     
 }
     
