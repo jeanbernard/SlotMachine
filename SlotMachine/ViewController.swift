@@ -93,6 +93,7 @@ class ViewController: UIViewController {
                 currentBet += 1
                 credits -= 1
                 updateMainView()
+                SlotBrain.computeWinnings(allCards)
             } else {
                 self.showAlertWithText(message: "You have exceeded the maximum amount of bets allowed")
             }
