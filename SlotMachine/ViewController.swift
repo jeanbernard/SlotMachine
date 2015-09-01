@@ -93,7 +93,6 @@ class ViewController: UIViewController {
                 currentBet += 1
                 credits -= 1
                 updateMainView()
-                SlotBrain.computeWinnings(allCards)
             } else {
                 self.showAlertWithText(message: "You have exceeded the maximum amount of bets allowed")
             }
@@ -120,6 +119,11 @@ class ViewController: UIViewController {
     func spinButtonPressed(button: UIButton) {
         allCards = SlotFactory.createSlots()
         setupSecondContainer(self.secondContainer)
+        var winningsMultiplier = SlotBrain.computeWinnings(allCards)
+        self.winnings = currentBet * winningsMultiplier
+        self.credits += winnings
+        self.currentBet = 0
+        updateMainView()
     }
     
     // MARK:
