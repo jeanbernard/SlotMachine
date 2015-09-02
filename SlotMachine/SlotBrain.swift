@@ -50,19 +50,19 @@ class SlotBrain {
         
         for slotRow in unpackedSlots {
             
-            if SlotBrain.checkForFlush(slotRow) == true {
+            if SlotBrain.checkForFlush(slotRow) {
                 println("Flush")
                 winnings += 1
                 flushWinCount += 1
             }
             
-            if SlotBrain.checkForThreeRow(slotRow) == true {
+            if SlotBrain.checkForThreeRow(slotRow) {
                 println("Three in a row!")
                 winnings += 1
                 straightWinCount += 1
             }
             
-            if SlotBrain.checkForThreeOfAKind(slotRow) == true {
+            if SlotBrain.checkForThreeOfAKind(slotRow) {
                 println("Three of a kind!")
                 winnings += 1
                 threeOfAKindCount += 1
@@ -95,7 +95,7 @@ class SlotBrain {
         
         for var index = 0; index < slotRow.count; index++ {
             
-            if slotRow[index].isRed == true {
+            if slotRow[index].isRed {
                 redCount++
             } else {
                 blackCount++
